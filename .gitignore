@@ -1,24 +1,5 @@
-# Ignore OS-specific files
-.DS_Store
-Thumbs.db
-
-# Ignore log files
-*.log
-
 # Ignore sensitive JSON file
 kaira2-d936d79f58f5.json
 
 # Ignore sensitive tf file
 main.tf
-
-# Ignore node_modules directory (for Node.js projects)
-node_modules/
-
-# Ignore IDE specific files (e.g., VSCode)
-.vscode/
-
-# Ignore temporary files
-temp/
-
-# Do not ignore important logs
-!important.log
