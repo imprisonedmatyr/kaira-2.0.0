@@ -7,6 +7,8 @@ Thumbs.db
 
 # Ignore sensitive JSON file
 kaira2-d936d79f58f5.json
+
+# Ignore sensitive tf file
 main.tf
 
 # Ignore node_modules directory (for Node.js projects)
