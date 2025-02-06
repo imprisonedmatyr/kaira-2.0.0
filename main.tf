@@ -1,11 +1,11 @@
 provider "google" {
-  credentials = file("credentials.json")
+  credentials = file("kaira2-d936d79f58f5.json")
   project = "river-cycle-449821-m1"
   region  = "us-central1"
 }
 
-resource "google_storage_bucket" "library_website_bucket" {
-  name     = "library-website-${random_id.bucket_id.hex}"
+resource "google_storage_bucket" "kaira2_bucket" {
+  name     = "kaira2-${random_id.bucket_id.hex}"
   location = "US"
   uniform_bucket_level_access = true
 }
@@ -18,12 +18,12 @@ resource "google_storage_bucket_object" "website_files" {
   for_each = fileset("${path.module}/website", "**")
 
   name   = each.value
-  bucket = google_storage_bucket.library_website_bucket.name
+  bucket = google_storage_bucket.kaira2_bucket.name
   source = "${path.module}/website/${each.value}"
 }
 
 resource "google_storage_bucket" "website" {
-  name     = "my-unique-bucket-${random_id.bucket_id.hex}"
+  name     = "kaira2-bucket-${random_id.bucket_id.hex}"
   location = "US"
   storage_class = "STANDARD"
   
