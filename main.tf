@@ -33,3 +33,25 @@ resource "google_storage_bucket" "website" {
   }
 }
 
+resource "null_resource" "website_setup" {
+  depends_on = [google_storage_bucket.website]
+
+  provisioner "local-exec" {
+    command = <<-EOT
+      gcloud storage buckets update gs://${google_storage_bucket.website.name} \
+        --website-main-page index.html \
+        --website-not-found-page 404.html
+    EOT
+  }
+}
+
+resource "null_resource" "set_bucket_permissions" {
+  depends_on = [google_storage_bucket.website]
+
+  provisioner "local-exec" {
+    command = <<-EOT
+      gsutil iam ch allUsers:objectViewer gs://${google_storage_bucket.website.name}
+    EOT
+  }
+}
+
