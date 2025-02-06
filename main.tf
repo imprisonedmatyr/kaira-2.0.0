@@ -5,7 +5,7 @@ provider "google" {
 }
 
 resource "google_storage_bucket" "kaira2_bucket" {
-  name     = "kaira2-${random_id.bucket_id.hex}"
+  name     = "kaira2"
   location = "US"
   uniform_bucket_level_access = true
 }
