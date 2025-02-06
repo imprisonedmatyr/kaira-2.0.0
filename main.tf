@@ -23,13 +23,20 @@ resource "google_storage_bucket_object" "website_files" {
 }
 
 resource "google_storage_bucket" "website" {
-  name     = "kaira2-bucket-${random_id.bucket_id.hex}"
+  name     = "kaira2-bucket"
   location = "US"
   storage_class = "STANDARD"
   
   website {
     main_page_suffix = "index.html"
     not_found_page   = "404.html"
+  }
+}
+
+terraform {
+  backend "gcs" {
+    bucket = "kaira2-bucket"
+    prefix = "terraform/state"
   }
 }
 
